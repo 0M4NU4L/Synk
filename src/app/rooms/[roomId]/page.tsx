@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 import { TasksBoard } from '@/components/synk/tasks-board';
 import Whiteboard from '@/components/synk/whiteboard';
+import { FilesSection } from '@/components/synk/files-section';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { LiveKitRoom, VideoConference } from '@livekit/components-react';
@@ -56,7 +57,11 @@ const WhiteboardTab = () => {
   const roomId = params.roomId as string;
   return <Whiteboard roomId={roomId} />;
 };
-const FilesTab = () => <Placeholder title="Google Drive Files" />;
+const FilesTab = () => {
+  const params = useParams();
+  const roomId = params.roomId as string;
+  return <FilesSection roomId={roomId} />;
+};
 const ChatTab = () => <Placeholder title="Real-time Chat" />;
 
 function TabContent() {

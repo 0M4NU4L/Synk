@@ -1,9 +1,19 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Mic, MicOff, Video, VideoOff, ScreenShare, PhoneOff } from 'lucide-react';
 import { AISummarizer } from './ai-summarizer';
 
 export function RoomHeader({ roomId }: { roomId: string }) {
+  const router = useRouter();
+
+  const handleLeaveRoom = () => {
+    // Navigate back to dashboard
+    router.push('/dashboard');
+  };
+
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center justify-between gap-4 border-b bg-background px-6">
       <div className="flex items-center gap-2">
@@ -30,7 +40,7 @@ export function RoomHeader({ roomId }: { roomId: string }) {
             <AvatarFallback>+2</AvatarFallback>
           </Avatar>
         </div>
-        <Button variant="destructive">
+        <Button variant="destructive" onClick={handleLeaveRoom}>
           <PhoneOff className="mr-2 h-5 w-5" />
           Leave
         </Button>
