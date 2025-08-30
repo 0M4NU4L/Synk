@@ -6,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Layers, Video, Edit3, CheckSquare, FileText, MessageSquare } from 'lucide-react';
 
 const navItems = [
-  { tab: 'call', icon: Video, label: 'Call' },
+  { tab: 'call', icon: Video, label: 'Video Call' },
   { tab: 'whiteboard', icon: Edit3, label: 'Whiteboard' },
   { tab: 'tasks', icon: CheckSquare, label: 'Tasks' },
   { tab: 'files', icon: FileText, label: 'Files' },
