@@ -1,7 +1,8 @@
 'use client';
 import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useParams } from 'next/navigation';
 import { TasksBoard } from '@/components/synk/tasks-board';
+import Whiteboard from '@/components/synk/whiteboard';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { LiveKitRoom, VideoConference } from '@livekit/components-react';
@@ -50,7 +51,11 @@ const CallTab = () => {
       </LiveKitRoom>
     );
   };
-const WhiteboardTab = () => <Placeholder title="Interactive Whiteboard" />;
+const WhiteboardTab = () => {
+  const params = useParams();
+  const roomId = params.roomId as string;
+  return <Whiteboard roomId={roomId} />;
+};
 const FilesTab = () => <Placeholder title="Google Drive Files" />;
 const ChatTab = () => <Placeholder title="Real-time Chat" />;
 
